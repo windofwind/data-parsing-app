@@ -1,0 +1,9 @@
+{
+  "applicationName": "parsing-app",
+  "SWAGGER": {
+    "title": "Parsing API",
+    "description": "Parsing API",
+    "version": "1.0.0",
+    "path": "/api"
+  }
+}
