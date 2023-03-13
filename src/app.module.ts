@@ -4,14 +4,12 @@
  */
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
-
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HankyungModule } from './hankyung/hankyung.module';
 
 @Module({
   imports: [ScheduleModule.forRoot(), HankyungModule],
-  controllers: [AppController],
+  controllers: [],
   providers: [AppService],
 })
 export class AppModule {}
