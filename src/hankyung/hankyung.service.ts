@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
 import { Indices } from './action/indices.class';
 
 @Injectable()
@@ -16,9 +15,9 @@ export class HankyungService {
    * @return {*}
    * @memberof HankyungService
    */
-  @Cron(CronExpression.EVERY_10_SECONDS, { timeZone: 'Asia/Seoul' })
   public async getMajorIndices() {
     const result = await this.indices.getData();
+
     return result;
   }
 }

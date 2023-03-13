@@ -1,5 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ResMajorIndices } from './action/schma/major-indices.dto';
+import { IMajorIndices } from './action/schma/major-indices.interface';
 import { HankyungService } from './hankyung.service';
 
 @ApiTags('hankyung')
@@ -7,22 +9,21 @@ import { HankyungService } from './hankyung.service';
 export class HankyungController {
   constructor(private readonly hankyung: HankyungService) {}
 
-  @Get('/')
-  @ApiOperation({
-    summary: '기본 경로',
-    description: '기본 경로',
-  })
-  async defaultGet() {
-    return {};
-  }
-
   @Get('/major-indices')
   @ApiOperation({
     summary: '한경데이터센터 - 해외지수 가져오기',
     description: '한경데이터센터 - 해외지수 가져오기',
   })
-  async HandlerGetMajorIndices() {
-    const result = await this.hankyung.getMajorIndices();
+  @ApiResponse({
+    status: 200,
+    type: ResMajorIndices,
+  })
+  async HandlerGetMajorIndices(): Promise<ResMajorIndices> {
+    const result = new ResMajorIndices();
+
+    result.success = true;
+    result.data = await this.hankyung.getMajorIndices();
+
     return result;
   }
 }

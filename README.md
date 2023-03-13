@@ -5,7 +5,7 @@
 ## Todo List
 
 - [x] [한경닷컴-해외지수](https://datacenter.hankyung.com/major-indices)
-- [ ] 한경닷컴-해외지수 dtoMajorIndices, IMajorIndices 작성
+- [x] 한경닷컴-해외지수 TMajorIndices, IMajorIndices 작성
 - [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
 - [ ] [한경닷컴-원자제](https://datacenter.hankyung.com/commodities)
 - [ ] [한경닷컴-채권금리](https://datacenter.hankyung.com/rates-bonds)

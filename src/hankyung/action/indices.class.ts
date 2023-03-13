@@ -9,6 +9,9 @@ import { load } from 'cheerio';
  * @link https://datacenter.hankyung.com/major-indices
  */
 export class Indices {
+  protected baseUrl: string = 'https://datacenter.hankyung.com';
+  protected url: string = '/major-indices';
+
   async getData() {
     const result = await this.getHtml();
     const jsonData = this.htmlParse(result);
@@ -22,7 +25,8 @@ export class Indices {
     try {
       const res = await axios({
         method: 'GET',
-        url: 'https://datacenter.hankyung.com/major-indices',
+        baseURL: this.baseUrl,
+        url: this.url,
         headers: {
           Accept:
             'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
@@ -41,17 +45,48 @@ export class Indices {
 
   protected htmlParse(html: string) {
     const $ = load(html);
+
     const result = $('.table-daily tbody tr')
       .map((i, element) => ({
-        상품명: $(element).find('td:nth-of-type(1)').text().trim(),
-        심볼: $(element).find('td:nth-of-type(2)').text().trim(),
-        종가: $(element).find('td:nth-of-type(3)').text().trim(),
-        전일비: $(element).find('td:nth-of-type(4)').text().trim(),
-        전일비레이트: $(element).find('td:nth-of-type(5)').text().trim(),
-        시가: $(element).find('td:nth-of-type(6)').text().trim(),
-        저가: $(element).find('td:nth-of-type(7)').text().trim(),
-        고가: $(element).find('td:nth-of-type(8)').text().trim(),
-        거래일: $(element).find('td:nth-of-type(9)').text().trim(),
+        market: $(element).find('td:nth-of-type(1)').text().trim(),
+        symbol: $(element).find('td:nth-of-type(2)').text().trim(),
+        prevClosingPrice: $(element)
+          .find('td:nth-of-type(3)')
+          .text()
+          .trim()
+          .split(',')
+          .join(''),
+        prevClosingRatePrice: $(element)
+          .find('td:nth-of-type(4)')
+          .text()
+          .trim()
+          .split(',')
+          .join(''),
+        prevClosingRate: $(element).find('td:nth-of-type(5)').text().trim(),
+        openingPrice: $(element)
+          .find('td:nth-of-type(6)')
+          .text()
+          .trim()
+          .split(',')
+          .join(''),
+        lowPrice: $(element)
+          .find('td:nth-of-type(7)')
+          .text()
+          .trim()
+          .split(',')
+          .join(''),
+        highPrice: $(element)
+          .find('td:nth-of-type(8)')
+          .text()
+          .trim()
+          .split(',')
+          .join(''),
+        tradeDate: $(element)
+          .find('td:nth-of-type(9)')
+          .text()
+          .trim()
+          .split('.')
+          .join('-'),
       }))
       .get();
 

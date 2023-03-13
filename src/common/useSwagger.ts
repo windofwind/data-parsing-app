@@ -20,6 +20,8 @@ export const useSwegger = (app: NestExpressApplication): void => {
 
   SwaggerModule.setup(config.get<string>('SWAGGER.path'), app, document, {
     swaggerOptions: {
+      defaultModelsExpandDepth: -1,
+      defaultModelExpandDepth: 10,
       displayRequestDuration: true,
     },
   });
