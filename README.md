@@ -5,7 +5,9 @@
 ## Todo List
 
 - [x] [한경닷컴-해외지수](https://datacenter.hankyung.com/major-indices)
-- [x] 한경닷컴-해외지수 TMajorIndices, IMajorIndices 작성
+- [x] 한경닷컴-해외지수 dto, interface 작성
+- [ ] [gainers-losser]() 데이터 가져오기
+- [ ] gainers-losser dto, interface 작성
 - [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
 - [ ] [한경닷컴-원자제](https://datacenter.hankyung.com/commodities)
 - [ ] [한경닷컴-채권금리](https://datacenter.hankyung.com/rates-bonds)
@@ -28,3 +30,9 @@
 
 - after app start
 - [swagger](http://localhost:3000/api)
+
+73613647.81884228 + 6523664.79830438
+
+73613647.81884228 / 80137312.61714666
+6523664.79830438 / 80137312.61714666
+
