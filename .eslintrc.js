@@ -30,6 +30,7 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
     'no-nested-ternary': 'error',
     'no-unexpected-multiline': 'error',
     // '@typescript-eslint/no-misused-promises': 'error',
