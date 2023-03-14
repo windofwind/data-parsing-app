@@ -1,17 +1,17 @@
-import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsArray, IsString, ValidateNested } from 'class-validator';
 import { dtoBase } from 'src/common/Base.dto';
-import { IMajorIndices } from './major-indices.interface';
+import { ICommodities } from './commodities.interface';
 
 /**
- * 한경 데이터 - 해외지수
+ * 한경 데이터 - 원자재 데이터
  *
  * @export
- * @class ResMajorIndices
- * @implements {IMajorIndices}
+ * @class Commodities
+ * @implements {ICommodities}
  */
-export class MajorIndices implements IMajorIndices {
+export class Commodities implements ICommodities {
   @IsString()
   @ApiProperty({
     name: 'market',
@@ -79,8 +79,8 @@ export class MajorIndices implements IMajorIndices {
 
 export class ResMajorIndices extends dtoBase {
   @IsArray()
-  @ApiProperty({ type: [MajorIndices] })
-  @Type(() => MajorIndices)
+  @ApiProperty({ type: [Commodities] })
+  @Type(() => Commodities)
   @ValidateNested({})
-  data: MajorIndices[];
+  data: Commodities[];
 }

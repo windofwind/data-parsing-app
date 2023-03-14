@@ -1,7 +1,9 @@
-export class Commodities {
-  async getData() {}
+import { Indices } from './indices.class';
 
-  protected async getHtml() {}
+export class Commodities extends Indices {
+  constructor() {
+    super();
 
-  protected async parse() {}
+    this.url = '/commodities';
+  }
 }
