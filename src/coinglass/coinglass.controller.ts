@@ -1,6 +1,5 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import puppeteer from 'puppeteer';
 import { resLiquidationData } from './action/schema/liquidation-data.dto';
 import { CoinglassService } from './coinglass.service';
 
