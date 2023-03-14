@@ -1,4 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsObject } from 'class-validator';
+import { dtoBase } from 'src/common/Base.dto';
+import { IStatusClass } from './gainers-losser.interface';
 
 export enum StatusEnum {
   Active = 'active',
@@ -58,7 +61,7 @@ export class GainersLosserData {
   loserList: ErList[];
 }
 
-export class StatusClass {
+export class StatusClass implements IStatusClass {
   @ApiProperty({ type: Date, name: 'timestamp' })
   timestamp: Date;
 
@@ -75,10 +78,12 @@ export class StatusClass {
   credit_count: number;
 }
 
-export class dtoGainersLosser {
+export class resGainersLosser extends dtoBase {
+  @IsObject()
   @ApiProperty({ type: GainersLosserData })
   data: GainersLosserData;
 
+  @IsObject()
   @ApiProperty({ type: StatusClass })
   status: StatusClass;
 }

@@ -17,7 +17,7 @@ export class CoinmarketcapService {
 
   // @Cron(CronExpression.EVERY_10_SECONDS)
   async handleCronGainersLosser() {
-    const result: IGainersLosser = await this.gainersLosser.getData();
+    const result = await this.gainersLosser.getData();
 
     return result;
   }

@@ -1,6 +1,6 @@
 export interface IGainersLosser {
   data: IGainersLosserData;
-  status: StatusClass;
+  status: IStatusClass;
 }
 
 export interface IGainersLosserData {
@@ -34,7 +34,7 @@ export enum IStatusEnum {
   Active = 'active',
 }
 
-export interface StatusClass {
+export interface IStatusClass {
   timestamp: Date;
   error_code: string;
   error_message: string;
