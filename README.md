@@ -15,8 +15,8 @@
 - [ ] [한경닷컴-경제캘린더](https://datacenter.hankyung.com/economic-calendar)
 - [ ] [coinbase](https://www.coinbase.com/converter)
 - [ ] upbit
-- [ ] 공포지수
-- [ ] coinglass (https://coinglass.com/)
+- [x] 공포지수, dto, interface
+- [x] coinglass (https://coinglass.com/) - 청산데이터, dto, interface
 - [ ] RSI 강도 지수
 - [ ] health check - status page
 
