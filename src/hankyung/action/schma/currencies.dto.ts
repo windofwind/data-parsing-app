@@ -8,7 +8,7 @@ import { ICurrencies } from './currencies.interface';
  * @class Currencies
  * @implements {ICurrencies}
  */
-export class Currencies implements ICurrencies {
+export class Currencies {
   @IsString()
   data: string;
 }

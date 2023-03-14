@@ -77,7 +77,7 @@ export class Commodities implements ICommodities {
   tradeDate: string;
 }
 
-export class ResMajorIndices extends dtoBase {
+export class ResCommodities extends dtoBase {
   @IsArray()
   @ApiProperty({ type: [Commodities] })
   @Type(() => Commodities)

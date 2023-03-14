@@ -43,10 +43,10 @@ export class Indices {
     return result;
   }
 
-  protected htmlParse(html: string) {
+  protected htmlParse(html: string, searchTable: string = '.table-daily') {
     const $ = load(html);
 
-    const result = $('.table-daily tbody tr')
+    const result = $(`${searchTable} tbody tr`)
       .map((i, element) => ({
         market: $(element).find('td:nth-of-type(1)').text().trim(),
         symbol: $(element).find('td:nth-of-type(2)').text().trim(),
