@@ -1,10 +1,11 @@
 import axios from 'axios';
+import { IFearPoint } from './schema/fear-point.interface';
 
 export class FearPoint {
-  protected baseUrl = 'https://fapi.coinglass.com';
-  protected url = '/api/futures/liquidation/info';
+  protected baseUrl = 'https://api.alternative.me';
+  protected url = '/fng';
 
-  async getData() {
+  async getData(): Promise<IFearPoint> {
     let result;
     try {
       const res = await axios({
@@ -12,8 +13,8 @@ export class FearPoint {
         baseURL: this.baseUrl,
         url: this.url,
         params: {
-          timeType: 1,
-          size: 12,
+          limit: 10,
+          date_format: 'kr',
         },
       });
 
