@@ -6,8 +6,8 @@
 
 - [x] [한경닷컴-해외지수](https://datacenter.hankyung.com/major-indices)
 - [x] 한경닷컴-해외지수 dto, interface 작성
-- [ ] [gainers-losser]() 데이터 가져오기
-- [ ] gainers-losser dto, interface 작성
+- [x] [gainers-losser]() 데이터 가져오기
+- [x] gainers-losser dto, interface 작성
 - [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
 - [x] [한경닷컴-원자제](https://datacenter.hankyung.com/commodities)
 - [x] 한경닷컴-원자제 dto, interface 작성
