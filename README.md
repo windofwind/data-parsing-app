@@ -8,6 +8,7 @@
 - [x] 한경닷컴-해외지수 dto, interface 작성
 - [x] [gainers-losser]() 데이터 가져오기
 - [x] gainers-losser dto, interface 작성
+- [ ] xangle coin data
 - [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
 - [x] [한경닷컴-원자제](https://datacenter.hankyung.com/commodities)
 - [x] 한경닷컴-원자제 dto, interface 작성
@@ -19,6 +20,7 @@
 - [x] 공포지수, dto, interface
 - [x] coinglass (https://coinglass.com/) - 청산데이터, dto, interface
 - [ ] RSI 강도 지수
+
 - [ ] health check - status page
 
 ## start
