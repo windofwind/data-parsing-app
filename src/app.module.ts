@@ -10,6 +10,8 @@ import { CoinmarketcapModule } from './coinmarketcap/coinmarketcap.module';
 import { CoinglassModule } from './coinglass/coinglass.module';
 import { AlternativeModule } from './alternative/alternative.module';
 import { EventEmitterModule } from '@nestjs/event-emitter';
+import { XangleModule } from './xangle/xangle.module';
+import { SocketsModule } from './sockets/sockets.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
     CoinmarketcapModule,
     CoinglassModule,
     AlternativeModule,
+    XangleModule,
+    SocketsModule,
   ],
   controllers: [],
   providers: [AppService],

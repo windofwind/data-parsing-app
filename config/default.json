@@ -5,5 +5,12 @@
     "description": "Parsing API",
     "version": "1.0.0",
     "path": "/api"
+  },
+  "xangle": {
+    "baseURL": "https://api.xangle.io",
+    "baseURLPro": "https://pro-api.xangle.io/",
+    "X-XANGLE-API-KEY": "4b60d56b-a080-495d-0334682560ad"
   }
 }
+
+
