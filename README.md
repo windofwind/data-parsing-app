@@ -8,20 +8,20 @@
 - [x] 한경닷컴-해외지수 dto, interface 작성
 - [x] [gainers-losser]() 데이터 가져오기
 - [x] gainers-losser dto, interface 작성
-- [ ] xangle coin data
-- [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
+- [x] xangle coin data
 - [x] [한경닷컴-원자제](https://datacenter.hankyung.com/commodities)
 - [x] 한경닷컴-원자제 dto, interface 작성
-- [ ] [한경닷컴-채권금리](https://datacenter.hankyung.com/rates-bonds)
-- [ ] [한경닷컴-경제캘린더](https://datacenter.hankyung.com/economic-calendar)
-- [ ] [coinbase](https://www.coinbase.com/converter)
 - [x] upbit socket
 - [x] coinone socket
+- [x] bithumb socket
 - [x] 공포지수, dto, interface
 - [x] coinglass (https://coinglass.com/) - 청산데이터, dto, interface
 - [ ] RSI 강도 지수
-
+- [ ] [한경닷컴-외환](https://datacenter.hankyung.com/currencies)
 - [ ] health check - status page
+- [ ] [한경닷컴-채권금리](https://datacenter.hankyung.com/rates-bonds)
+- [ ] [한경닷컴-경제캘린더](https://datacenter.hankyung.com/economic-calendar)
+- [ ] [coinbase](https://www.coinbase.com/converter)
 
 ## start
 
