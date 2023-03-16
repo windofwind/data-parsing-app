@@ -10,12 +10,13 @@ export class SocketsService {
   constructor() {
     this.upbit = new UpbitSocket();
     this.upbit.getCoinList().then((data) => {
-      console.info('upbit-socket open');
       this.upbit.open(['KRW-BTC', 'KRW-ETH', 'KRW-NEO']);
     });
 
     this.coinone = new CoinoneSocket();
-    this.coinone.open([]);
+    this.coinone.getCoinList().then((data) => {
+      this.coinone.open([]);
+    });
   }
 
   async getUpbitCoinListRefresh() {

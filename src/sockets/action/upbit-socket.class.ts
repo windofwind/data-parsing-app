@@ -79,6 +79,8 @@ export class UpbitSocket
    * @memberof Upbit
    */
   async open(coinList: string[]) {
+    console.info('upbit-socket open');
+
     let codes = coinList;
 
     if (!coinList.length) {

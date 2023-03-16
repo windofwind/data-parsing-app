@@ -6,8 +6,9 @@ import { client as Socket, IUtf8Message } from 'websocket';
 import { ICoinoneTicker } from './schema/coinone-socket.interface';
 
 export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
-  protected baseUrl: string = 'https://api.upbit.com';
-  protected url: string = '/v1/market/all';
+  protected baseUrl: string = 'https://api.coinone.co.kr';
+  protected url: string = '/public/v2/ticker_new';
+
   protected coinList: any = { KRW: {}, BTC: {}, USDT: {} };
 
   protected socket: Socket;
@@ -22,8 +23,9 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
       const res = await axios({
         method: 'GET',
         baseURL: this.baseUrl,
-        url: this.url,
+        url: this.url + '/KRW',
       });
+      result = res.data;
     } catch (e) {
       console.error(e);
 
@@ -34,6 +36,7 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
   }
 
   open(coinList: string[]) {
+    console.info('coinone-socket open');
     this.socket = new Socket();
     // wss://wss.coinone.co.kr/ws?token_type=web
 
@@ -43,9 +46,9 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
 
         const data = JSON.parse(pattern.utf8Data.toString());
 
-        if (data.channel === 'ticker_all') {
-          const changedData = data.data?.reduce(
-            (acc: any, item: ICoinoneTicker) => {
+        if (data.channel === 'ticker_all' && data.data) {
+          const parseData = data.data?.reduce(
+            (acc: any, item: ICoinoneTicker): Record<string, any> => {
               try {
                 const splitItemMarket = item.trading_pair.split('-');
                 item.currency = splitItemMarket[1];
@@ -65,8 +68,12 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
             {},
           );
 
-          // const data = Buffer.from(message.binaryData).toString('utf8');
-          // const item = JSON.parse(data.toString());
+          // const changeData = parseData.each((element: any) => {
+          //   // element
+          // });
+
+          this.BeforePrice.KRW = this.coinPrice.KRW;
+          this.coinPrice.KRW = parseData;
         }
       });
 
@@ -82,6 +89,6 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
   }
 
   getPrice() {
-    return {};
+    return this.coinPrice;
   }
 }

@@ -25,8 +25,6 @@ export interface IMarketSocket<List> {
   getPrice(): any;
 }
 
-export interface IMarketPrice {
-  KRW: any;
-  BTC: any;
-  USDT: any;
+export interface ICoinPriceItem {
+  price: string;
 }
