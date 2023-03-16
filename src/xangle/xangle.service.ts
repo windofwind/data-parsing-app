@@ -5,7 +5,7 @@ import {
 } from './action/exchange-quote-list.class';
 
 import { promisify } from 'util';
-import { EventEmitter2 } from '@nestjs/event-emitter';
+import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 const Sleep = promisify(setTimeout);
 
 @Injectable()
@@ -50,6 +50,8 @@ export class XangleService {
       sort_field: 'volume',
       sort_direction: 'desc',
     });
+
+    this.getAllPrice();
   }
 
   async getUpbitPrice() {
@@ -60,6 +62,13 @@ export class XangleService {
     result.push(await this.send(this.coinonePrice));
 
     return result;
+  }
+  @OnEvent('xangle.price.tick')
+  async getAllPrice() {
+    await this.send(this.upbitPrice);
+    await this.send(this.bithumbPrice);
+    await this.send(this.coinonePrice);
+    this.eventEmitter.emit('xangle.price.tick');
   }
 
   protected async send(context: ExchangeQuoteList) {
