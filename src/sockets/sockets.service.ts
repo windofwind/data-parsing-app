@@ -10,7 +10,7 @@ export class SocketsService {
   constructor() {
     this.upbit = new UpbitSocket();
     this.upbit.getCoinList().then((data) => {
-      this.upbit.open(['KRW-BTC', 'KRW-ETH', 'KRW-NEO']);
+      this.upbit.open([]);
     });
 
     this.coinone = new CoinoneSocket();

@@ -63,6 +63,7 @@ export class UpbitSocket
         },
         {},
       );
+      this.coinList = result;
     } catch (e) {
       console.error(e);
 
@@ -84,7 +85,11 @@ export class UpbitSocket
     let codes = coinList;
 
     if (!coinList.length) {
-      codes = this.getPrice()['KRW'].map((item: any) => item.marketName);
+      codes = [];
+
+      for (const targetCurrency in this.coinList['KRW']) {
+        codes.push(this.coinList['KRW'][targetCurrency].marketName);
+      }
     }
 
     if (this.socket) {
