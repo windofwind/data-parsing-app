@@ -3,7 +3,14 @@ import { UpbitSocket } from './action/upbit-socket.class';
 
 @Injectable()
 export class SocketsService {
-  protected upbit: UpbitSocket = new UpbitSocket();
+  protected upbit: UpbitSocket;
+
+  constructor() {
+    this.upbit = new UpbitSocket();
+    this.getCoinList().then((data) => {
+      this.upbit.open(['KRW-BTC']);
+    });
+  }
 
   async getCoinList() {
     const result = await this.upbit.getCoinList();
@@ -16,6 +23,6 @@ export class SocketsService {
   }
 
   getPrice() {
-    return this.upbit.getPrice('KRW');
+    return this.upbit.getPrice()['KRW'];
   }
 }

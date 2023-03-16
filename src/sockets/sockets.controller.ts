@@ -13,11 +13,11 @@ export class SocketsController {
     return result;
   }
 
-  @Get('/open')
-  async open() {
-    await this.socketsService.open();
-    return;
-  }
+  // @Get('/open')
+  // async open() {
+  //   await this.socketsService.open();
+  //   return;
+  // }
 
   @Get('/price')
   getPrice() {

@@ -8,20 +8,19 @@ import {
 import { client as Socket } from 'websocket';
 import { v4 as uuidv4 } from 'uuid';
 import { EventEmitter } from 'stream';
+import { IMarketSocket } from './schema/market-socket.interface';
 
-export interface ISocket {
-  getCoinList(): Promise<IUpbitMarket>;
-  open(coinList: string[]): Promise<void>;
-}
-
-export class UpbitSocket extends EventEmitter implements ISocket {
+export class UpbitSocket
+  extends EventEmitter
+  implements IMarketSocket<IUpbitMarket>
+{
   protected baseUrl: string = 'https://api.upbit.com';
   protected url: string = '/v1/market/all';
   protected coinList: IUpbitMarket;
 
   protected socket: Socket;
   protected socketUrl: string = 'wss://api.upbit.com/websocket/v1';
-  protected coinPrice: Record<string, any> = {};
+  protected coinPrice: Record<string, any> = { KRW: {}, BTC: {}, USDT: {} };
 
   /**
    * 코인 리스트 가져오기
@@ -29,7 +28,10 @@ export class UpbitSocket extends EventEmitter implements ISocket {
    * @return {*}
    * @memberof Upbit
    */
-  async getCoinList(): Promise<IUpbitMarket> {
+  async getCoinList(force: boolean = true): Promise<IUpbitMarket> {
+    if (!force) {
+      return this.coinList;
+    }
     let result: IUpbitMarket;
     try {
       const res = await axios({
@@ -83,7 +85,7 @@ export class UpbitSocket extends EventEmitter implements ISocket {
     let codes = coinList;
 
     if (!coinList.length) {
-      codes = (await this.getCoinList()).KRW.map((item) => item.marketName);
+      codes = this.getPrice()['KRW'].map((item: any) => item.marketName);
     }
 
     if (this.socket) {
@@ -102,7 +104,7 @@ export class UpbitSocket extends EventEmitter implements ISocket {
         item.currency = splitItemMarket[0];
         item.targetCurrency = splitItemMarket[1];
 
-        if (!this.coinPrice[item.currency]) {
+        if (!this.coinPrice.hasOwnProperty(item.currency)) {
           this.coinPrice[item.currency] = {};
         }
         this.coinPrice[item.currency][item.targetCurrency] = item;
@@ -116,7 +118,7 @@ export class UpbitSocket extends EventEmitter implements ISocket {
     this.socket.connect(this.socketUrl);
   }
 
-  getPrice(currency: string) {
-    return this.coinPrice[currency];
+  getPrice() {
+    return this.coinPrice;
   }
 }
