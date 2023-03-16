@@ -1,0 +1,26 @@
+{
+  "name": "parse-app",
+  "script": "./dist/main.js",
+  "exec_mode": "cluster",
+  "instances": "1",
+  "log_date_format": "YYYY-MM-DD HH:mm Z",
+  "max_memory_restart": "1G",
+  "node_args": [
+    "--nouse-idle-notification",
+    "--expose-gc",
+    "--max-old-space-size=8192",
+    "--stack_size=8192"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "NODE_CONFIG_ENV": "development"
+  },
+  "env_test": {
+    "NODE_ENV": "test",
+    "NODE_CONFIG_ENV": "test"
+  },
+  "env_production": {
+    "NODE_ENV": "production",
+    "NODE_CONFIG_ENV": "production"
+  }
+}
