@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsArray, IsString, ValidateNested } from 'class-validator';
-import { dtoBase } from 'src/common/Base.dto';
+import { dtoBase } from '../../../common/Base.dto';
 import { ICommodities } from './commodities.interface';
 
 /**

@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsObject } from 'class-validator';
-import { dtoBase } from 'src/common/Base.dto';
+import { dtoBase } from './../../../common/Base.dto';
 import { IStatusClass } from './gainers-losser.interface';
 
 export enum StatusEnum {

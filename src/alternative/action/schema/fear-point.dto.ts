@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsDate, IsObject, IsString } from 'class-validator';
-import { dtoBase } from 'src/common/Base.dto';
+import { dtoBase } from './../../../common/Base.dto';
 import { IDatum, IFearPoint, IMetadata } from './fear-point.interface';
 
 export class Metadata implements IMetadata {
