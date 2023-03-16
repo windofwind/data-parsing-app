@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CustomError } from 'src/common/error.class';
+import { CustomError } from '../../common/error.class';
 import {
   IUpbitMarket,
   IUpbitMarketItem,
@@ -28,10 +28,7 @@ export class UpbitSocket
    * @return {*}
    * @memberof Upbit
    */
-  async getCoinList(force: boolean = true): Promise<IUpbitMarket> {
-    if (!force) {
-      return this.coinList;
-    }
+  async getCoinList(): Promise<IUpbitMarket> {
     let result: IUpbitMarket;
     try {
       const res = await axios({
@@ -58,9 +55,9 @@ export class UpbitSocket
           };
 
           if (!acc.hasOwnProperty(data.currency)) {
-            acc[data.currency] = [];
+            acc[data.currency] = {};
           }
-          acc[data.currency].push(data);
+          acc[data.currency][data.targetCurrency] = data;
 
           return acc;
         },

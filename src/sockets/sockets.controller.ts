@@ -7,9 +7,9 @@ import { SocketsService } from './sockets.service';
 export class SocketsController {
   constructor(private readonly socketsService: SocketsService) {}
 
-  @Get('/')
-  async getCoinList() {
-    const result = await this.socketsService.getCoinList();
+  @Get('/upbit-coin-refresh')
+  async getUpbitCoinListRefresh() {
+    const result = await this.socketsService.getUpbitCoinListRefresh();
     return result;
   }
 
@@ -19,8 +19,8 @@ export class SocketsController {
   //   return;
   // }
 
-  @Get('/price')
-  getPrice() {
-    return this.socketsService.getPrice();
+  @Get('/upbit-price')
+  getUpbitPrice() {
+    return this.socketsService.getUpbitPrice();
   }
 }
