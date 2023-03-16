@@ -46,7 +46,10 @@ export class ExchangeQuoteList {
       });
 
       result = res.data;
-      console.log(result.total_count);
+      console.log(
+        `xangle #${this.option.exchange_name} get price`,
+        result.total_count,
+      );
     } catch (e) {
       console.error(e);
 
