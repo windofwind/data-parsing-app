@@ -14,7 +14,8 @@
 - [ ] [한경닷컴-채권금리](https://datacenter.hankyung.com/rates-bonds)
 - [ ] [한경닷컴-경제캘린더](https://datacenter.hankyung.com/economic-calendar)
 - [ ] [coinbase](https://www.coinbase.com/converter)
-- [ ] upbit
+- [x] upbit socket
+- [x] coinone socket
 - [x] 공포지수, dto, interface
 - [x] coinglass (https://coinglass.com/) - 청산데이터, dto, interface
 - [ ] RSI 강도 지수
