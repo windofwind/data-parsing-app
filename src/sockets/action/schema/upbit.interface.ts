@@ -37,6 +37,7 @@ export class IUpbitMarket {
 }
 
 export interface IUpbitTicker {
+  market: 'upbit';
   /**
    * 타입
    *

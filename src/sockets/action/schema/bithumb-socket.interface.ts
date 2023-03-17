@@ -18,6 +18,7 @@ export interface IBithumbCoinList {
 }
 
 export interface IBithumbTransaction {
+  market: 'bithumb';
   volumePower: string;
   chgAmt: string;
   chgRate: string;

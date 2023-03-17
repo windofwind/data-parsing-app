@@ -56,6 +56,7 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
             (acc: any, item: ICoinoneTicker): Record<string, any> => {
               try {
                 const splitItemMarket = item.trading_pair.split('-');
+                item.market = 'coinone';
                 item.currency = splitItemMarket[1];
                 item.targetCurrency = splitItemMarket[0];
 

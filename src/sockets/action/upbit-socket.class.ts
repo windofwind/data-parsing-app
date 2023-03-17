@@ -105,6 +105,7 @@ export class UpbitSocket
 
         const item: IUpbitTicker = JSON.parse(data);
         const splitItemMarket = item.code.split('-');
+        item.market = 'upbit';
         item.currency = splitItemMarket[0];
         item.targetCurrency = splitItemMarket[1];
 

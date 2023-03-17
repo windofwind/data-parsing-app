@@ -1,5 +1,6 @@
 export interface ICoinoneTicker {
   type: 'ticker';
+  market: 'coinone';
   trading_pair: string; //'OGN-KRW';
   /**
    * 통화명

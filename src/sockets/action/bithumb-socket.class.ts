@@ -68,6 +68,7 @@ export class BithumbSocket
           const splitItemMarket = item.content.symbol.split('_');
           const currency = splitItemMarket[1];
           const targetCurrency = splitItemMarket[0];
+          item.content.market = 'bithumb';
           item.content.currency = currency;
           item.content.targetCurrency = targetCurrency;
 
@@ -85,7 +86,7 @@ export class BithumbSocket
         JSON.stringify({
           type: 'ticker',
           symbols,
-          tickTypes: ['30M'],
+          tickTypes: ['30M', '1H', '12H', '24H', 'MID'],
         }),
       );
     });
@@ -94,6 +95,6 @@ export class BithumbSocket
   }
 
   getPrice(): any {
-    return {};
+    return this.coinPrice;
   }
 }
