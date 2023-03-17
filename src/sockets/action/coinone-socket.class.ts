@@ -37,8 +37,13 @@ export class CoinoneSocket extends EventEmitter implements IMarketSocket<any> {
 
   open(coinList: string[]) {
     console.info('coinone-socket open');
+
+    if (this.socket) {
+      this.socket.removeAllListeners('message');
+      this.socket.removeAllListeners('connect');
+    }
+
     this.socket = new Socket();
-    // wss://wss.coinone.co.kr/ws?token_type=web
 
     this.socket.addListener('connect', (connection) => {
       connection.addListener('message', (msg) => {

@@ -79,7 +79,7 @@ export class UpbitSocket
    * @param {string[]} coinSymbols
    * @memberof Upbit
    */
-  async open(coinList: string[]) {
+  open(coinList: string[]) {
     console.info('upbit-socket open');
 
     let codes = coinList;
